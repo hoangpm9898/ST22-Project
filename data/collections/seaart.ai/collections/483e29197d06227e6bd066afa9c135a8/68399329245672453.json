@@ -1,0 +1,54 @@
+[
+  {
+    "id": "cvmel85e878c739kijpg",
+    "model_id": "f8172af6747ec762bcf847bd60fdf7cd",
+    "prompt": " HYPER REALISTIC PHOTO ,  high quality ,  Mirror Finish  ,,8k,  wallpaper,   ray tracing, elegant woman, extremely beautiful supermodel , black long sleek hair,  beautiful eyes,  young beautiful woman, completely naked, big breast, A lot of large character...",
+    "local_prompt": "",
+    "banner": {
+      "width": 688,
+      "height": 1024,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-04-02/cvmel25e878c73d143eg/137d2bc758877bf3848b41f3bb7d0a5e_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 2,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "483e29197d06227e6bd066afa9c135a8",
+    "folder_no": "68399329245672453",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": 6
+  },
+  {
+    "id": "cvmene5e878c73di0fsg",
+    "model_id": "f8172af6747ec762bcf847bd60fdf7cd",
+    "prompt": " HYPER REALISTIC PHOTO ,  high quality ,  Mirror Finish  ,,8k,  wallpaper,   ray tracing, elegant woman, extremely beautiful supermodel , black long sleek hair,  beautiful eyes,  young beautiful woman, completely naked, big breast, A lot of large character...",
+    "local_prompt": "",
+    "banner": {
+      "width": 688,
+      "height": 1024,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-04-02/cvmen9de878c7397ou2g/15771ca12c29986b8de9d5b38cffee52_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 1,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "483e29197d06227e6bd066afa9c135a8",
+    "folder_no": "68399329245672453",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": 6
+  }
+]

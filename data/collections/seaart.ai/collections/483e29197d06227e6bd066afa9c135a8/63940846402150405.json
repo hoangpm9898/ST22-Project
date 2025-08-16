@@ -1,0 +1,54 @@
+[
+  {
+    "id": "cqaidite878c73b09s1g",
+    "model_id": "649c31ce0a54d70681e8b9714049134f",
+    "prompt": "",
+    "local_prompt": "",
+    "banner": {
+      "width": 864,
+      "height": 1536,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2024-07-15/cqaid6le878c738ab3k0/0e674de077627e3fe5c731476490df18f04af1aa_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 2,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "483e29197d06227e6bd066afa9c135a8",
+    "folder_no": "63940846402150405",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": false,
+    "tracking_type": "collection",
+    "tracking_collection_id": 6
+  },
+  {
+    "id": "cq9puo5e878c738e4jeg",
+    "model_id": "649c31ce0a54d70681e8b9714049134f",
+    "prompt": "",
+    "local_prompt": "",
+    "banner": {
+      "width": 864,
+      "height": 1536,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2024-07-14/cq9puete878c73f4gn5g/95e89f5f457ae21d2a09b6af8a6811761c677efd_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 2,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "483e29197d06227e6bd066afa9c135a8",
+    "folder_no": "63940846402150405",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": false,
+    "tracking_type": "collection",
+    "tracking_collection_id": 6
+  }
+]

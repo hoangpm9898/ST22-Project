@@ -1,0 +1,54 @@
+[
+  {
+    "id": "d0ekff5e878c73evsclg",
+    "model_id": "f8172af6747ec762bcf847bd60fdf7cd",
+    "prompt": "(8k, RAW Photo,Highest Quality, high resolution:1.1), (super real:1.4),(realistic, realistic:1.3), Sodebtt Light,is big,2 Girls,realistic Face,realistic Body,realistic Skin, disorganized ,masterpiece,(cute:1.8), cute子たち, alone, (is big:1.2), Detailed black...",
+    "local_prompt": "",
+    "banner": {
+      "width": 688,
+      "height": 1024,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-09/d0ekf7le878c73akntt0/9337141f23e0913d29dd6cf055afd53a_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 1,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "cf12623f32fdf4037c567bc93337617a",
+    "folder_no": "72101522857544709",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "d0h4t4de878c73a1qc90",
+    "model_id": "csv05qle878c73dkqm50",
+    "prompt": "2 cute Japanese girls、 clear 、sexy、Gothic ta、maid、fancy cafe、and my stomach is sticking out、smile",
+    "local_prompt": "",
+    "banner": {
+      "width": 1152,
+      "height": 768,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-12/d0h4sude878c73a4rv30/f20efc58ef6a54b12a8806c5a900682f98592daf_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 1,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "cf12623f32fdf4037c567bc93337617a",
+    "folder_no": "72101522857544709",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": false,
+    "tracking_type": "collection",
+    "tracking_collection_id": "1"
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "cm2i2gde878c739l0nu0",
+    "model_id": "8605d1ebd03c9738f7cf067c5db7ed71",
+    "prompt": "((​Masterpiece: 1.3、top-quality、realisitic、ultra-detailliert、hight resolution, Photorealistic)), Sharp focus: 1.2, A cute beautiful woman with perfect body: 1.4, Slim abdomen: 1.2, ((Tanned body, Large breasts: 1.2)), ((Slender figure, Tall pretty woman)),...",
+    "local_prompt": "",
+    "banner": {
+      "width": 1152,
+      "height": 1152,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2023-12-22/cm2htrle878c739kq9h0/4a8a969e885fb75497ca0cc8644a0b2407e810fe_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 2,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "483e29197d06227e6bd066afa9c135a8",
+    "folder_no": "63943972675954693",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": 6
+  }
+]

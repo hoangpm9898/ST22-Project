@@ -1,0 +1,302 @@
+[
+  {
+    "id": "72100638430914565",
+    "name": "1-sports",
+    "category": 2,
+    "artwork_items": [
+      {
+        "id": "d0hanfte878c73dke6d0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-13/d0han9te878c73ffb310/066c5eedf249209f295fcfcd428070edf5b64e74_low.webp",
+        "banner_width": 768,
+        "banner_height": 512
+      },
+      {
+        "id": "d0hc9t5e878c738ghmlg",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-13/d0hc9nde878c7391vdjg/5d8414ba2a21592cf01126ea949e8b53282d7750_low.webp",
+        "banner_width": 512,
+        "banner_height": 768
+      },
+      {
+        "id": "d0hc9kle878c73abbui0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-13/d0hc9f5e878c73d43e1g/c449244da308a081e7f0d16b26e094a6c487d348_low.webp",
+        "banner_width": 512,
+        "banner_height": 768
+      }
+    ],
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "72100695983010821",
+    "name": "1-dance",
+    "category": 2,
+    "artwork_items": [
+      {
+        "id": "d0h92rde878c738bvcj0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-13/d0h92mle878c73ffdhr0/778324d30c22a9096b99aa24934a9febc471968f_low.webp",
+        "banner_width": 512,
+        "banner_height": 768
+      },
+      {
+        "id": "d0iv7ole878c738392h0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-15/d0iv7gde878c739d3qe0/782aad440b05195d48ad685bdaa75be9_low.webp",
+        "banner_width": 688,
+        "banner_height": 1024
+      },
+      {
+        "id": "d0iv8vle878c73c7j2jg",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-15/d0iv8gle878c738m6ok0/9ee4a0f94ea1cdca0110f5e47703cdd5_low.webp",
+        "banner_width": 688,
+        "banner_height": 1024
+      }
+    ],
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "72100948007230469",
+    "name": "1-school",
+    "category": 2,
+    "artwork_items": [
+      {
+        "id": "d0gl6u5e878c73b0ge6g",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-12/d0gl6nte878c73el9og0/bc27fc4d7d3726dcc018be29f794b43a4fc2e901_low.webp",
+        "banner_width": 1152,
+        "banner_height": 768
+      },
+      {
+        "id": "d0ek1ete878c73evc17g",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-08/d0ek185e878c73bqv65g/b42c7456a281258917bb8c0303db47e73cfc991f_low.webp",
+        "banner_width": 648,
+        "banner_height": 1152
+      },
+      {
+        "id": "d0emptde878c73f34kt0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-09/d0empnde878c73ca1c40/095a990bcda6a64d6abafd8ba04a7b6a_low.webp",
+        "banner_width": 688,
+        "banner_height": 1024
+      }
+    ],
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "72101522857544709",
+    "name": "1-maid",
+    "category": 2,
+    "artwork_items": [
+      {
+        "id": "d0h4mbde878c73a1iesg",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-12/d0h4m4le878c73bnr3kg/d1e859612a10ecdfd9fcc580034752d703a34606_low.webp",
+        "banner_width": 768,
+        "banner_height": 1152
+      },
+      {
+        "id": "d0ekerle878c73c8mjp0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-09/d0ekel5e878c73flunkg/08a26f0a6a8be2a2af3acf7647c706b447d1368c_low.webp",
+        "banner_width": 648,
+        "banner_height": 1152
+      },
+      {
+        "id": "d0ekff5e878c73evsclg",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-09/d0ekf7le878c73akntt0/9337141f23e0913d29dd6cf055afd53a_low.webp",
+        "banner_width": 688,
+        "banner_height": 1024
+      }
+    ],
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "72101593060799493",
+    "name": "1-pool",
+    "category": 2,
+    "artwork_items": [
+      {
+        "id": "d0gldd5e878c739jan9g",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-12/d0gld6le878c73c5b9f0/02ad0b66eb1f08b0d5a86aefe31818be05155d96_low.webp",
+        "banner_width": 1152,
+        "banner_height": 768
+      },
+      {
+        "id": "d0evj5le878c73bvs6ig",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-09/d0evitde878c739cslm0/9d2d5889636e35b00a153b34bc89e623_low.webp",
+        "banner_width": 688,
+        "banner_height": 1024
+      },
+      {
+        "id": "d0eukete878c73bubdc0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-09/d0euk85e878c73dpok2g/a975b19473a263d8b280d187e6f4baff_low.webp",
+        "banner_width": 688,
+        "banner_height": 1024
+      }
+    ],
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "72101953674474501",
+    "name": "1-swimsuit",
+    "category": 2,
+    "artwork_items": [
+      {
+        "id": "d0f0jk5e878c73c1j4v0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-09/d0f0j7le878c73acj8sg/b150decb862e897cf33a35f6e685c671_low.webp",
+        "banner_width": 688,
+        "banner_height": 1024
+      },
+      {
+        "id": "d0jvl0te878c73dpjeug",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-17/d0jvkq5e878c73820ei0/a09a770834875dfceec721cc76cd2bb5_low.webp",
+        "banner_width": 688,
+        "banner_height": 1024
+      },
+      {
+        "id": "d0jvlale878c73dpjtng",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-17/d0jvl4le878c73ekq3cg/5d961aab1b56dd6b4f4a8138a498a8ef_low.webp",
+        "banner_width": 688,
+        "banner_height": 1024
+      }
+    ],
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "72102331534075909",
+    "name": "1-good friends",
+    "category": 2,
+    "artwork_items": [],
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "72124150831970309",
+    "name": "1-kimono",
+    "category": 2,
+    "artwork_items": [
+      {
+        "id": "d0hhqjle878c739hkal0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-13/d0hhqble878c73eqdpn0/73ca72b80632ce46b6cd7581255d5c35_low.webp",
+        "banner_width": 1376,
+        "banner_height": 2048
+      },
+      {
+        "id": "d0ks3hte878c738ng7qg",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-18/d0ks365e878c738f3pfg/e77831f6f2bba0bcc3a3829366d69330_low.webp",
+        "banner_width": 1024,
+        "banner_height": 800
+      },
+      {
+        "id": "d0ks6jde878c73arbugg",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-18/d0ks6cde878c73d3e6hg/6aeb1a05860230e74ba5898f53be5dae_low.webp",
+        "banner_width": 688,
+        "banner_height": 1024
+      }
+    ],
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "72209776788913157",
+    "name": "1-guitar",
+    "category": 2,
+    "artwork_items": [
+      {
+        "id": "d0i62jde878c73e85nng",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-14/d0i62d5e878c73elaobg/9ee0205e721bb5d976127d09acdaf0fd_low.webp",
+        "banner_width": 688,
+        "banner_height": 1024
+      },
+      {
+        "id": "d0i65lde878c73aemh1g",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/png/2025-05-14/d0i65i5e878c7380a1gg/516d2ebecbd019012b2967e3ea9ac6960c5cb323_low.webp",
+        "banner_width": 1376,
+        "banner_height": 2048
+      },
+      {
+        "id": "d0jl2k5e878c73d6o2fg",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-16/d0jl20de878c73fotbq0/d5827eafca8e37f4846cdeb613955343_low.webp",
+        "banner_width": 688,
+        "banner_height": 1024
+      }
+    ],
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "72950765501558789",
+    "name": "1-Bunny",
+    "category": 2,
+    "artwork_items": [
+      {
+        "id": "d0n6b5de878c73aac8r0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-21/d0n6at5e878c73b0mt2g/46b14ec0b55b89bc7ff7caa4600f212d_low.webp",
+        "banner_width": 832,
+        "banner_height": 1216
+      },
+      {
+        "id": "d0mtsgte878c739ufdi0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-21/d0mtrute878c73bonnfg/59708c03d038c0405dc17b87ac15f62a_low.webp",
+        "banner_width": 1024,
+        "banner_height": 688
+      },
+      {
+        "id": "d0n63gde878c73cco92g",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-21/d0n638de878c73avivu0/ec713c4997fe023a85cba85c0dfb20f2_low.webp",
+        "banner_width": 832,
+        "banner_height": 1216
+      }
+    ],
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "73299015124431877",
+    "name": "1-idol",
+    "category": 2,
+    "artwork_items": [
+      {
+        "id": "d0q36vle878c73bv2apg",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-26/d0q36pde878c73bae350/93f33d7af9f1d1597f72298bdecd7044_low.webp",
+        "banner_width": 1024,
+        "banner_height": 800
+      },
+      {
+        "id": "d0qnlvde878c73fgpdmg",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-27/d0qnlnte878c738l9ci0/27d224c29d997b57f4899b1e7e3e8836_low.webp",
+        "banner_width": 2048,
+        "banner_height": 1600
+      },
+      {
+        "id": "d0oupf5e878c73ch62j0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-24/d0oup8de878c73ftr6g0/28d3902bf2f52c27f592dff1ba689342_low.webp",
+        "banner_width": 1024,
+        "banner_height": 800
+      }
+    ],
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "73385084865007621",
+    "name": "1-move",
+    "category": 2,
+    "artwork_items": [],
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "73439019400227845",
+    "name": "1-anime",
+    "category": 2,
+    "artwork_items": [
+      {
+        "id": "d0o205te878c73fh5c8g",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-23/d0o1vnte878c739gkhs0/5a21c6549d8d70eba01f9ff736c125e9_low.webp",
+        "banner_width": 1365,
+        "banner_height": 2048
+      },
+      {
+        "id": "d0lvujte878c73c14hb0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-20/d0lvugle878c73c092vg/1681eb97d1cb8a48b11b7b4fc4a7101f66713dcc_low.webp",
+        "banner_width": 768,
+        "banner_height": 512
+      },
+      {
+        "id": "d0m0m6de878c739vrru0",
+        "banner": "https://image.cdn2.seaart.me/temp-convert-webp/png/2025-05-20/d0m0m3le878c73feb10g/6ab24794809b336dc6d01e97e2d9d5a53f29fc47_low.webp",
+        "banner_width": 1536,
+        "banner_height": 1024
+      }
+    ],
+    "tracking_collection_id": "1"
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "cq2cbqle878c73clqvo0",
+    "model_id": "81c9105d394d27d8731d3375b8618fa6",
+    "prompt": "(masterpiece, RAW, 32K, UHD, hyper realistic, best quality),smiling minchen, \n\nabsurdes, mouth closed, balanced eyes,\n(Best quality details:1.2),realistic,8K High definition,Ultra Detailed,High quality texture,intricate details,detailed texture,finely deta...",
+    "local_prompt": "",
+    "banner": {
+      "width": 844,
+      "height": 1536,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2024-07-03/cq2cbite878c73dn5vng/1bc71d997719cb860a70c6df47a107ea99db4133_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 1,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "483e29197d06227e6bd066afa9c135a8",
+    "folder_no": "63942073676472325",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": 6
+  }
+]

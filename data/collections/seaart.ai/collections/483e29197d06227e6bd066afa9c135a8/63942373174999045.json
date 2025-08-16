@@ -1,0 +1,28 @@
+[
+  {
+    "id": "cpl9ehde878c738fcj70",
+    "model_id": "8a69ff33edba207acd86bd3896a10e72",
+    "prompt": "",
+    "local_prompt": "",
+    "banner": {
+      "width": 1024,
+      "height": 1536,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2024-06-11/cpjtalde878c73b16lfg/e97ded28a839cbfe906e7364aa6c36ecbcb96923_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 2,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "483e29197d06227e6bd066afa9c135a8",
+    "folder_no": "63942373174999045",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": 6
+  }
+]

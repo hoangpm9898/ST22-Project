@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "name": "asian",
+    "thumb": "https://cdn.adamediadev.com/st22d/v1/albums/test/1750734906909/d0rrogde878c73a90e30.webp"
+  },
+  {
+    "id": 1,
+    "name": "korean",
+    "thumb": "https://cdn.adamediadev.com/st22d/v1/albums/test/1750734906909/d0rrogde878c73a90e30.webp"
+  },
+  {
+    "id": 2,
+    "name": "beauty",
+    "thumb": "https://cdn.adamediadev.com/st22d/v1/albums/test/1750842442894/crvuoq5e878c73dsu7ug.webp"
+  },
+  {
+    "id": 3,
+    "name": "stronger",
+    "thumb": "https://cdn.adamediadev.com/st22d/v1/albums/test/1750842435365/clt9ebp4msbc73a1k5a0.webp"
+  },
+  {
+    "id": 4,
+    "name": "police",
+    "thumb": "https://cdn.adamediadev.com/st22d/v1/albums/test/1750842435365/clt97s94msbc73cgev7g.webp"
+  },
+  {
+    "id": 5,
+    "name": "japanese",
+    "thumb": ""
+  },
+  {
+    "id": 6,
+    "name": "urban",
+    "thumb": "https://cdn.midgamestudio.com/st22d/v1/albums/test/1750734906909/d0rrogde878c73a90e30.webp"
+  }
+]

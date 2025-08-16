@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "For You",
+    "thumb": ""
+  },
+  {
+    "id": 8,
+    "name": "Lady",
+    "thumb": ""
+  },
+  {
+    "id": 4,
+    "name": "Fantasy",
+    "thumb": ""
+  },
+  {
+    "id": 10,
+    "name": "Uniform",
+    "thumb": ""
+  },
+  {
+    "id": 5,
+    "name": "Playful",
+    "thumb": ""
+  },
+  {
+    "id": 2,
+    "name": "Japanese",
+    "thumb": ""
+  },
+  {
+    "id": 3,
+    "name": "Sports",
+    "thumb": ""
+  },
+  {
+    "id": 7,
+    "name": "Office",
+    "thumb": ""
+  },
+  {
+    "id": 0,
+    "name": "None",
+    "thumb": ""
+  }
+]

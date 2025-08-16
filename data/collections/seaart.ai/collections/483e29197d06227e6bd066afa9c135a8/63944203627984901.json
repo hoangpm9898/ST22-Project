@@ -1,0 +1,28 @@
+[
+  {
+    "id": "cskbtgle878c73annbl0",
+    "model_id": "f8172af6747ec762bcf847bd60fdf7cd",
+    "prompt": "(32K:1.9, Horror depictions:1.9, Highest quality, masterpiece, Ultra-high resolution), Perfect dynamic composition, Highly detailed skin and facial textures:1.3, mRain, after the rain, Night Street Corner, (The road is dark:1.5, Professional high angle cam...",
+    "local_prompt": "",
+    "banner": {
+      "width": 688,
+      "height": 1024,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2024-11-04/cskbt8te878c73betb6g/75c30318f38fd51a8ad6e341eaedcc6f_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 1,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "483e29197d06227e6bd066afa9c135a8",
+    "folder_no": "63944203627984901",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": 6
+  }
+]

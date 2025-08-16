@@ -1,0 +1,80 @@
+[
+  {
+    "id": "d0i65lde878c73aemh1g",
+    "model_id": "f8172af6747ec762bcf847bd60fdf7cd",
+    "prompt": "(with friends:1.3), (Highest Quality:1.4), (very well detailed), (very well detailed美しい顔), open your mouth and laugh, amazing face and eyes,  iris,  medium hair,  Japanese Beauty, (slim figure:1.3),  (face up:1.2),   smooth, very well detailed CG synthesis...",
+    "local_prompt": "",
+    "banner": {
+      "width": 1376,
+      "height": 2048,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/png/2025-05-14/d0i65i5e878c7380a1gg/516d2ebecbd019012b2967e3ea9ac6960c5cb323_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 1,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "cf12623f32fdf4037c567bc93337617a",
+    "folder_no": "72209776788913157",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "d0jkumde878c73d6h910",
+    "model_id": "f8172af6747ec762bcf847bd60fdf7cd",
+    "prompt": "(masterpiece, Best Quality:1.1),Girls Night、singing while playing an acoustic guitar in the city of Shibuya、microphone stand、 casual, Slightly bohemian style,  wearing a large white t-shirt, shorts, sneakers. open your mouth. several people are comfortably...",
+    "local_prompt": "",
+    "banner": {
+      "width": 688,
+      "height": 1024,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-16/d0jku3le878c73fo87lg/21c5494150fd55fc84fe8aaa5576c7ca_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 1,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "cf12623f32fdf4037c567bc93337617a",
+    "folder_no": "72209776788913157",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": "1"
+  },
+  {
+    "id": "d0i61sde878c739dea1g",
+    "model_id": "f8172af6747ec762bcf847bd60fdf7cd",
+    "prompt": "(with friends:1.3), (Highest Quality:1.4), (very well detailed), (very well detailed美しい顔), open your mouth and laugh, amazing face and eyes,  iris,  medium hair,  Japanese Beauty, (slim figure:1.3),  (face up:1.2),   smooth, very well detailed CG synthesis...",
+    "local_prompt": "",
+    "banner": {
+      "width": 688,
+      "height": 1024,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-05-14/d0i61mde878c73apusn0/e147435aeb387c65e9aed20960f40ead_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 1,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "cf12623f32fdf4037c567bc93337617a",
+    "folder_no": "72209776788913157",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": "1"
+  }
+]

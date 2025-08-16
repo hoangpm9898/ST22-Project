@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1750734906909,
+    "name": "Slay Girls",
+    "categoryId": 3,
+    "tags": [
+      "asian",
+      "korean",
+      "urban"
+    ],
+    "thumb_url": "https://cdn.adamediadev.com/st22d/v1/albums/1750734906909/d0spbbde878c73ehg0hg.webp",
+    "photos_url": [
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750734906909/d0spcqle878c73dkg7l0.webp",
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750734906909/d0spccle878c73bj6r2g.webp",
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750734906909/d0spbi5e878c73bj5kn0.webp",
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750734906909/d0spbbde878c73ehg0hg.webp",
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750734906909/d0rrogde878c73a90e30.webp"
+    ],
+    "phase": 1,
+    "countries": [
+      "JP",
+      "KR",
+      "TH"
+    ]
+  },
+  {
+    "id": 1750842435365,
+    "name": "AAA Girls",
+    "categoryId": 2,
+    "tags": [
+      "stronger",
+      "police",
+      "urban"
+    ],
+    "thumb_url": "https://cdn.adamediadev.com/st22d/v1/albums/1750842435365/clrvk114msbc73fmbg6g.webp",
+    "photos_url": [
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750842435365/clt97s94msbc73cgev7g.webp",
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750842435365/clt97s94msbc73cgev70.webp",
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750842435365/clrvk114msbc73fmbg6g.webp",
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750842435365/clt97s94msbc73cgev4g.webp",
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750842435365/clt9ebp4msbc73a1k5a0.webp",
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750842435365/clt9n0h4msbc73892ac0.webp",
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750842435365/clt9lih4msbc738917hg.webp",
+      "https://cdn.adamediadev.com/st22d/v1/albums/test/1750842435365/clt9l614msbc73a1nu40.webp"
+    ],
+    "phase": 1,
+    "countries": [
+      "US",
+      "DE"
+    ]
+  }
+]

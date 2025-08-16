@@ -1,0 +1,80 @@
+[
+  {
+    "id": "coacpjte878c73bh1h6g",
+    "model_id": "5f159ca53c90dedc0b3cd0f7815db616",
+    "prompt": "a gorgeous 20 years old woman, black wavy hair,  standing on the road, motorbike in the background, sexy pose, white cotton crop top, super short denim shorts, leather jacket, Looking at the camera, full body pics (in the sunset light:1.2),\nperfect eyes, p...",
+    "local_prompt": "",
+    "banner": {
+      "width": 1024,
+      "height": 576,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2024-04-03/co6brjde878c73eu6md0/b475a027f18d749d7615db1f179fe3dc12dfa8fd_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 1,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "483e29197d06227e6bd066afa9c135a8",
+    "folder_no": "63943267845196805",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": 6
+  },
+  {
+    "id": "coacpjte878c73bh1h60",
+    "model_id": "5f159ca53c90dedc0b3cd0f7815db616",
+    "prompt": "a gorgeous 20 years old European woman, black wavy hair,  standing on the road, motorbike in the background, sexy pose, white cotton crop top, super short denim shorts, leather jacket, Looking at the camera, full body pics (in the sunset light:1.2),\nperfec...",
+    "local_prompt": "",
+    "banner": {
+      "width": 1024,
+      "height": 576,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2024-04-03/co6bplde878c73duahbg/f85af230fb607323f7eb8348d6b44b7060991b49_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 1,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "483e29197d06227e6bd066afa9c135a8",
+    "folder_no": "63943267845196805",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": 6
+  },
+  {
+    "id": "cu8qvpte878c73eq3sjg",
+    "model_id": "f8172af6747ec762bcf847bd60fdf7cd",
+    "prompt": "score_9, score_8_up, score_7_up, score_6_up,character_UI, 1girl (Supermodel, extremely beautiful, hour glass body), NaRa speeds through the rocky canyon on her ice-blue motorcycle, her sci-fi bodysuit jacket shimmering faintly with a frosty sheen. Her wond...",
+    "local_prompt": "",
+    "banner": {
+      "width": 688,
+      "height": 1024,
+      "url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-01-23/cu8qud5e878c738i53vg/e4341a382e3605b80fa3c7a8f3554422_low.webp",
+      "nsfw": 2,
+      "is_nsfw_plus": false,
+      "green": 1,
+      "has_meta": 0,
+      "stream_url": "",
+      "cover_url": ""
+    },
+    "author_id": "483e29197d06227e6bd066afa9c135a8",
+    "folder_no": "63943267845196805",
+    "obj_type": null,
+    "sub_obj_type": null,
+    "title": null,
+    "cover": null,
+    "status": true,
+    "tracking_type": "collection",
+    "tracking_collection_id": 6
+  }
+]
