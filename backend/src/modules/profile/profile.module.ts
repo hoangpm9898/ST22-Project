@@ -2,12 +2,13 @@ import { Module } from "@nestjs/common";
 import { ProfileService } from "./profile.service";
 import { ProfileController } from "./profile.controller";
 import { PrismaModule } from "#root/modules/prisma/prisma.module";
-import { CdnService, NsfwVerificationService } from "#root/common/services";
+import { CdnModule } from "#root/modules/cdn/cdn.module";
+import { NsfwModule } from "#root/modules/nsfw/nsfw.module";
 
 @Module({
-	imports: [PrismaModule],
+	imports: [PrismaModule,  CdnModule, NsfwModule],
 	controllers: [ProfileController],
-	providers: [ProfileService, CdnService, NsfwVerificationService],
+	providers: [ProfileService],
 	exports: [ProfileService],
 })
 export class ProfileModule {}

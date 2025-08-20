@@ -1,9 +1,10 @@
 import { Injectable, OnModuleInit } from "@nestjs/common";
 import { PrismaRepository } from "#root/modules/prisma/prisma.repository";
 import { readJSONFile, ensureJSONFileAndWrite } from "#root/common/utils";
-import { CdnService, NsfwVerificationService } from "#root/common/services";
 import { config } from "#root/config";
 import { AlbumDto, AlbumWallpaperDto, CategoryDto, TagDto, CountryDto, CreateAlbumDto, AlbumInfoDto } from "./dto";
+import { NsfwVerificationService } from "#root/modules/nsfw/nsfw-verification.service";
+import { CdnService } from "#root/modules/cdn/cdn.service";
 
 @Injectable()
 export class AlbumService implements OnModuleInit {
