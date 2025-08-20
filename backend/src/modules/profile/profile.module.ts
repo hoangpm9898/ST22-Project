@@ -6,7 +6,7 @@ import { CdnModule } from "#root/modules/cdn/cdn.module";
 import { NsfwModule } from "#root/modules/nsfw/nsfw.module";
 
 @Module({
-	imports: [PrismaModule,  CdnModule, NsfwModule],
+	imports: [PrismaModule, CdnModule, NsfwModule],
 	controllers: [ProfileController],
 	providers: [ProfileService],
 	exports: [ProfileService],
