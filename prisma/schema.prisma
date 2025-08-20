@@ -1,0 +1,141 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+model Profile {
+    id             BigInt   @id @map("_id")
+    name           String
+    thumb          String
+    avatarPath     String?  @map("avatar_path")
+    backgroundPath String?  @map("background_path")
+    wallpaperIds   String[] @map("wallpaper_ids")
+    nsfwAdult      String[] @map("nsfw_adult")
+    nsfwRacy       String[] @map("nsfw_racy")
+
+    @@map("profiles")
+}
+
+model Wallpaper {
+    id                   String  @id @default(auto()) @map("_id") @db.ObjectId
+    name                 String
+    url                  String
+    preview_url          String
+    albumId              BigInt? @map("album_id")
+    modelId              String  @map("model_id")
+    authorId             String  @map("author_id")
+    folderNo             String  @default("default") @map("folder_no")
+    trackingType         String  @default("work") @map("tracking_type")
+    trackingCollectionId Int     @default(0) @map("tracking_collection_id")
+
+    @@map("wallpapers")
+}
+
+model Album {
+    id           Int      @id @map("_id")
+    name         String
+    thumb        String
+    categoryId   Int      @map("category_id")
+    tags         String[]
+    countries    String[]
+    wallpaperIds String[] @map("wallpaper_ids")
+    nsfwAdult    String[] @map("nsfw_adult")
+    nsfwRacy     String[] @map("nsfw_racy")
+    mapStatus    Boolean  @map("map_status")
+    Category     Category @relation(fields: [categoryId], references: [id])
+
+    @@map("albums")
+}
+
+model Category {
+    id     Int     @id @map("_id")
+    name   String
+    thumb  String
+    Albums Album[]
+
+    @@map("categories")
+}
+
+model Country {
+    id   Int    @id @map("_id")
+    name String
+
+    @@map("countries")
+}
+
+model Tag {
+    id    Int    @id @map("_id")
+    name  String
+    thumb String
+
+    @@map("tags")
+}
+
+model TrackingCollection {
+    id                 String  @id @default(auto()) @map("_id") @db.ObjectId
+    collectionProvider String  @map("collection_provider")
+    collectionId       Int     @map("collection_id")
+    collectionTopic    String  @map("collection_topic")
+    collectionStyle    String  @map("collection_style")
+    collectionLink     String? @map("collection_link")
+    collectionType     String  @map("collection_type")
+    collectionTargetId String  @map("collection_target_id")
+    collectionStatus   String  @map("collection_status")
+    itemsTotal         Int     @map("items_total")
+    createdAt          BigInt  @map("created_at")
+
+    @@map("tracking_collections")
+}
+
+model AccountItem {
+    id           String     @id @default(auto()) @map("_id") @db.ObjectId
+    seaArtWorkId String     @map("sea_art_work_id") @db.ObjectId
+    SeaArtWork   SeaArtWork @relation(fields: [seaArtWorkId], references: [id], name: "sea_art_work_account_items")
+
+    @@map("account_items")
+}
+
+model SeaArtWork {
+    id                   String        @id @default(auto()) @map("_id") @db.ObjectId
+    modelId              String        @map("model_id")
+    prompt               String
+    localPrompt          String?       @map("local_prompt")
+    banner               Json
+    authorId             String        @map("author_id")
+    folderNo             String        @map("folder_no")
+    objType              String?       @map("obj_type")
+    subObjType           String?       @map("sub_obj_type")
+    title                String?
+    cover                String?
+    status               Boolean
+    trackingType         String        @map("tracking_type")
+    trackingCollectionId Int           @map("tracking_collection_id")
+    AccountItems         AccountItem[] @relation("sea_art_work_account_items")
+
+    @@map("seaart_works")
+}
+
+model SeaArtCollection {
+    id                   String                 @id @default(auto()) @map("_id") @db.ObjectId
+    name                 String
+    category             Int
+    trackingCollectionId Int                    @map("tracking_collection_id")
+    artworkItems         SeaArtCollectionItem[]
+
+    @@map("seaart_collections")
+}
+
+model SeaArtCollectionItem {
+    id               String           @id @default(auto()) @map("_id") @db.ObjectId
+    banner           String
+    bannerWidth      Int              @map("banner_width")
+    bannerHeight     Int              @map("banner_height")
+    collectionId     String           @map("collection_id") @db.ObjectId
+    SeaArtCollection SeaArtCollection @relation(fields: [collectionId], references: [id])
+
+    @@map("seaart_collection_items")
+}
