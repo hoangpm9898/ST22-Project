@@ -1,14 +1,14 @@
 import { Injectable } from "@nestjs/common";
+import { PrismaRepository } from "#root/modules/prisma/prisma.repository";
 import { google } from "googleapis";
 import { config } from "#root/config";
-import { ensureJSONFileAndWrite } from "#root/common/utils";
 import { TrackCollectionDto } from "../dto";
 
 @Injectable()
 export class GoogleSheetsService {
 	private sheets: any;
 
-	constructor() {
+	constructor(private prisma: PrismaRepository) {
 		const auth = new google.auth.GoogleAuth({
 			keyFile: "api-projects-461703-ecb31530fbc7.json",
 			scopes: ["https://www.googleapis.com/auth/spreadsheets"],
@@ -48,7 +48,37 @@ export class GoogleSheetsService {
 				collectionTargetId: c.collectionTargetId,
 			}));
 
-			await ensureJSONFileAndWrite(config.FILE_PATH_LIST_TRACKING_COLL, trackCollections);
+			// Save to database using Prisma
+			const trackingCollectionData = trackCollections.map((tc) => ({
+				collectionId: tc.collectionId,
+				collectionStatus: tc.collectionStatus,
+				collectionProvider: tc.collectionProvider,
+				collectionTopic: tc.collectionTopic,
+				collectionStyle: tc.collectionStyle,
+				collectionType: tc.collectionType,
+				collectionTargetId: tc.collectionTargetId,
+				collectionLink: tc.collectionLink,
+				itemsTotal: tc.itemsTotal || 0,
+				createdAt: BigInt(Date.now()),
+			}));
+
+			// Upsert tracking collections (update if exists, create if not)
+			for (const tcData of trackingCollectionData) {
+				await this.prisma.trackingCollection.upsert({
+					where: {
+						collectionId: tcData.collectionId,
+					},
+					update: {
+						collectionStatus: tcData.collectionStatus,
+						collectionProvider: tcData.collectionProvider,
+						collectionTopic: tcData.collectionTopic,
+						collectionStyle: tcData.collectionStyle,
+						collectionType: tcData.collectionType,
+						collectionTargetId: tcData.collectionTargetId,
+					},
+					create: tcData,
+				});
+			}
 
 			return trackCollections;
 		} catch (error) {

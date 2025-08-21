@@ -1,6 +1,5 @@
-import { Injectable, OnModuleInit } from "@nestjs/common";
-import { readJSONFile, readDirectory, ensureJSONFileAndWrite } from "#root/common/utils";
-import { config } from "#root/config";
+import { Injectable, Logger, OnModuleInit } from "@nestjs/common";
+import { PrismaRepository } from "#root/modules/prisma/prisma.repository";
 import {
 	ListWallpapersRequestDto,
 	ListWallpapersResponseDto,
@@ -9,75 +8,71 @@ import {
 	PopulateDataDto,
 	WallpaperFilterDto,
 } from "./dto";
-
-interface TrackingCollection {
-	collectionId: number;
-	collectionStatus: string;
-	collectionProvider: string;
-	collectionTopic: string;
-	collectionStyle: string;
-	collectionType: string;
-	collectionTargetId: string;
-}
+import { config } from "#root/config";
 
 @Injectable()
 export class ManagementService implements OnModuleInit {
+	private readonly logger: Logger = new Logger(ManagementService.name);
 	private blacklistSet = new Set<string>();
-	private trackingCollections: TrackingCollection[] = [];
+
+	constructor(private prisma: PrismaRepository) {}
 
 	async onModuleInit() {
 		await this.loadBlacklist();
-		await this.updateTrackingCollections();
+		this.logger.log("ManagementService initialized with Prisma MongoDB connection");
 	}
 
 	private async loadBlacklist(): Promise<void> {
-		// Load album wallpapers into blacklist
+		// Load all wallpapers that are currently in use (albums and profiles)
 		try {
-			const albumWallpapers = await readJSONFile(config.WALLPAPERS_PATH);
-			albumWallpapers.forEach((w: any) => this.blacklistSet.add(w.id));
-		} catch (error) {
-			console.error("Error loading album wallpapers for blacklist:", error);
-		}
+			const wallpapers = await this.prisma.wallpaper.findMany({
+				select: { id: true },
+			});
 
-		// Load profile wallpapers into blacklist
-		try {
-			const profileWallpapers = await readJSONFile(config.PROFILES_WALLPAPERS_PATH);
-			profileWallpapers.forEach((w: any) => this.blacklistSet.add(w.id));
+			wallpapers.forEach((w) => this.blacklistSet.add(w.id));
+			this.logger.log(`*** Loaded ${this.blacklistSet.size} wallpapers in blacklist`);
 		} catch (error) {
-			console.error("Error loading profile wallpapers for blacklist:", error);
+			this.logger.error("Error loading wallpapers for blacklist:", error);
 		}
-
-		console.log(`*** Loaded ${this.blacklistSet.size} wallpapers in blacklist`);
 	}
 
 	async updateTrackingCollections(): Promise<void> {
-		this.trackingCollections = await readJSONFile(config.FILE_PATH_LIST_TRACKING_COLL);
-		console.log("\n[!] Updated tracking collections successfully.");
+		// This method is called after queue processing to refresh tracking collections
+		this.logger.log("[!] Updated tracking collections successfully.");
 	}
 
 	async getPopulateData(): Promise<PopulateDataDto> {
+		const trackingCollections = await this.prisma.trackingCollection.findMany({
+			where: {
+				collectionStatus: "tracked",
+			},
+			select: {
+				collectionId: true,
+				collectionProvider: true,
+				collectionTopic: true,
+				collectionStyle: true,
+				collectionType: true,
+			},
+		});
+
 		const track_ids: number[] = [];
 		const providers: string[] = [];
 		const topics: string[] = [];
 		const styles: string[] = [];
 		const types: string[] = [];
 
-		this.trackingCollections
-			.filter((c) => c.collectionStatus === "tracked")
-			.forEach((t) => {
-				if (!track_ids.includes(t.collectionId)) track_ids.push(t.collectionId);
-				if (!providers.includes(t.collectionProvider)) providers.push(t.collectionProvider);
-				if (!topics.includes(t.collectionTopic)) topics.push(t.collectionTopic);
-				if (!styles.includes(t.collectionStyle)) styles.push(t.collectionStyle);
-				if (!types.includes(t.collectionType)) types.push(t.collectionType);
-			});
+		trackingCollections.forEach((t) => {
+			if (!track_ids.includes(t.collectionId)) track_ids.push(t.collectionId);
+			if (!providers.includes(t.collectionProvider)) providers.push(t.collectionProvider);
+			if (!topics.includes(t.collectionTopic)) topics.push(t.collectionTopic);
+			if (!styles.includes(t.collectionStyle)) styles.push(t.collectionStyle);
+			if (!types.includes(t.collectionType)) types.push(t.collectionType);
+		});
 
 		return { track_ids, providers, topics, styles, types };
 	}
 
 	async getWallpapers(filter: WallpaperFilterDto): Promise<WallpaperDto[]> {
-		let wallpapers: WallpaperDto[] = [];
-
 		try {
 			const {
 				provider = "All",
@@ -88,133 +83,132 @@ export class ManagementService implements OnModuleInit {
 				image_size,
 			} = filter;
 
-			console.log(`\n[!] List <${provider}> wallpapers starting...`);
+			this.logger.log(`[!] List <${provider}> wallpapers starting...`);
 
-			let filteredCollections = this.trackingCollections;
+			// Build filter for tracking collections
+			const collectionFilter: any = {
+				collectionStatus: "tracked",
+			};
 
 			if (provider !== "All") {
-				filteredCollections = filteredCollections.filter((c) => c.collectionProvider === provider);
+				collectionFilter.collectionProvider = provider;
 			}
 			if (topic !== "All") {
-				console.log(`[!] - List <${provider}> wallpapers with topic: ${topic}`);
-				filteredCollections = filteredCollections.filter((c) => c.collectionTopic === topic);
+				this.logger.log(`[!] - List <${provider}> wallpapers with topic: ${topic}`);
+				collectionFilter.collectionTopic = topic;
 			}
 			if (style !== "All") {
-				console.log(`[!] - List <${provider}> wallpapers with style: ${style}`);
-				filteredCollections = filteredCollections.filter((c) => c.collectionStyle === style);
+				this.logger.log(`[!] - List <${provider}> wallpapers with style: ${style}`);
+				collectionFilter.collectionStyle = style;
 			}
 			if (type !== "All") {
-				console.log(`[!] - List <${provider}> wallpapers with type: ${type}`);
-				filteredCollections = filteredCollections.filter((c) => c.collectionType === type);
+				this.logger.log(`[!] - List <${provider}> wallpapers with type: ${type}`);
+				collectionFilter.collectionType = type;
 			}
 			if (track_id !== "All") {
-				console.log(`[!] - List <${provider}> wallpapers with track_id: ${track_id} (${typeof track_id})`);
-				filteredCollections = filteredCollections.filter((c) => c.collectionId === Number(track_id));
+				this.logger.log(`[!] - List <${provider}> wallpapers with track_id: ${track_id}`);
+				collectionFilter.collectionId = Number(track_id);
 			}
 
-			// Sort filteredCollections by created_at (or collectionId)
-			if (filteredCollections.length > 1) {
-				filteredCollections = filteredCollections.sort((a, b) => b.collectionId - a.collectionId);
-			}
+			// Get filtered tracking collections
+			const filteredCollections = await this.prisma.trackingCollection.findMany({
+				where: collectionFilter,
+				orderBy: { collectionId: "desc" },
+			});
+
+			this.logger.log(`[!] - Found ${filteredCollections.length} matching tracking collections`);
+
+			let wallpapers: WallpaperDto[] = [];
 
 			for (const collection of filteredCollections) {
-				if (collection.collectionStatus !== "tracked") continue;
+				this.logger.log(`[!] - List wallpapers for track-collection '${collection.collectionId}'`);
 
-				console.log(`[!] - List wallpapers for track-collection '${collection.collectionId}'`);
-
-				let items: any[] = [];
 				try {
+					let seaArtWorks: any[] = [];
+
+					// Build filter for SeaArt works
+					const workFilter: any = {
+						status: true,
+						trackingCollectionId: collection.collectionId,
+					};
+
+					// Add image size filter if provided
+					if (image_size) {
+						workFilter.banner = {
+							path: ["width"],
+							gte: parseInt(image_size.width),
+						};
+					}
+
 					// Handling for collections type...
 					if (collection.collectionType === "User_Collection" || collection.collectionType === "All") {
-						const dirPath = `data/collections/${collection.collectionProvider}/collections/${collection.collectionTargetId}`;
-						const files = await readDirectory(dirPath);
-						console.log(
-							`[!] - List wallpapers for track-collection '${collection.collectionId}' by collection type, has: ${files.length} collections`,
-						);
-
-						for (const file of files) {
-							const itemsByCollections = await readJSONFile(`${dirPath}/${file}`);
-							console.log(
-								`[!] - List wallpapers for track-collection '${collection.collectionId}' by collection type, has: ${itemsByCollections.length} items`,
-							);
-
-							// Filter with blacklist & image size...
-							if (itemsByCollections && itemsByCollections.length > 0) {
-								items = [
-									...items,
-									...itemsByCollections
-										.filter(
-											(i: any) =>
-												i.status &&
-												this.checkImageSize(i.banner.width, i.banner.height, image_size),
-										)
-										.map((i: any) => ({
-											id: i.id,
-											image_url: i.banner.url,
-											model_id: i.model_id,
-											author_id: i.author_id,
-											folder_no: i.folder_no,
-											tracking_type: i.tracking_type,
-											tracking_collection_id: i.tracking_collection_id,
-										})),
-								];
-							}
-						}
+						seaArtWorks = [
+							...seaArtWorks,
+							...(await this.prisma.seaArtWork.findMany({
+								where: {
+									...workFilter,
+									trackingType: "collection",
+									authorId: collection.collectionTargetId,
+								},
+							})),
+						];
 					}
 
 					// Handling for works type...
 					if (collection.collectionType === "User_Work" || collection.collectionType === "All") {
-						const filePath = `data/collections/${collection.collectionProvider}/works/${collection.collectionTargetId}.json`;
-						const itemsByWork = await readJSONFile(filePath);
-						console.log(
-							`[!] - List wallpapers for track-collection '${collection.collectionId}' by Work type, has: ${itemsByWork.length} items`,
-						);
-
-						// Filter with blacklist...
-						if (itemsByWork && itemsByWork.length > 0) {
-							items = [
-								...items,
-								...itemsByWork
-									.filter(
-										(i: any) =>
-											i.status &&
-											this.checkImageSize(i.banner.width, i.banner.height, image_size),
-									)
-									.map((i: any) => ({
-										id: i.id,
-										image_url: i.banner.url,
-										model_id: i.model_id,
-										author_id: i.author_id,
-										folder_no: i.folder_no,
-										tracking_type: i.tracking_type,
-										tracking_collection_id: i.tracking_collection_id,
-									})),
-							];
-						}
+						seaArtWorks = [
+							...seaArtWorks,
+							...(await this.prisma.seaArtWork.findMany({
+								where: {
+									...workFilter,
+									trackingType: "work",
+									authorId: collection.collectionTargetId,
+								},
+							})),
+						];
 					}
 
-					console.log(
+					// Convert SeaArt works to wallpaper DTOs
+					const items: WallpaperDto[] = seaArtWorks
+						.filter((work) => {
+							// Apply image size filter if provided
+							if (image_size && work.banner) {
+								return this.checkImageSize(work.banner.width || 0, work.banner.height || 0, image_size);
+							}
+							return true;
+						})
+						.map((work) => ({
+							id: work.id,
+							image_url: work.banner?.url || "",
+							model_id: work.modelId,
+							author_id: work.authorId,
+							folder_no: work.folderNo,
+							tracking_type: work.trackingType,
+							tracking_collection_id: work.trackingCollectionId,
+						}));
+
+					this.logger.log(
 						`[!] - List wallpapers for track-collection '${collection.collectionId}' success: ${items.length} items`,
 					);
 
 					wallpapers = [...wallpapers, ...items];
-
-					// Filter existed wallpapers
-					await this.loadBlacklist();
-					wallpapers = wallpapers.filter((w) => !this.blacklistSet.has(w.id));
 				} catch (error) {
-					console.error(
+					this.logger.error(
 						`[x] - List wallpapers for track-collection '${collection.collectionId}' fail: ${error.message}`,
 					);
 				}
 			}
 
-			console.log(`[!] - List wallpapers successfully: ${wallpapers.length} wallpapers`);
-		} catch (error) {
-			console.error(`[x] - List wallpapers error: ${error.message}`);
-		}
+			// Filter out blacklisted wallpapers
+			await this.loadBlacklist();
+			wallpapers = wallpapers.filter((w) => !this.blacklistSet.has(w.id));
 
-		return wallpapers;
+			this.logger.log(`[!] - List wallpapers successfully: ${wallpapers.length} wallpapers`);
+			return wallpapers;
+		} catch (error) {
+			this.logger.error(`[x] - List wallpapers error: ${error.message}`);
+			return [];
+		}
 	}
 
 	async listWallpapers(listWallpapersDto: ListWallpapersRequestDto): Promise<ListWallpapersResponseDto> {
@@ -248,34 +242,39 @@ export class ManagementService implements OnModuleInit {
 	async addToBlacklist(deleteWallpaperDto: DeleteWallpaperDto): Promise<void> {
 		const { id, collection_id, track_collection } = deleteWallpaperDto;
 
-		console.log(`\n[!] Remove wallpaper has id: ${id}`);
+		this.logger.log(`[!] Remove wallpaper has id: ${id}`);
 
 		try {
-			let filePath: string;
-
-			// For wallpaper has type: Collection
+			// Update the SeaArt work status to mark it as unavailable
 			if (track_collection.type === "collection") {
-				filePath = `data/collections/${track_collection.provider}/collections/${track_collection.targetId}/${collection_id}.json`;
+				await this.prisma.seaArtWork.updateMany({
+					where: {
+						id: id,
+						folderNo: collection_id,
+						authorId: track_collection.targetId,
+					},
+					data: {
+						status: false,
+					},
+				});
+			} else if (track_collection.type === "work") {
+				await this.prisma.seaArtWork.updateMany({
+					where: {
+						id: id,
+						authorId: track_collection.targetId,
+					},
+					data: {
+						status: false,
+					},
+				});
 			}
-			// For wallpaper has type: Work
-			else if (track_collection.type === "work") {
-				filePath = `data/collections/${track_collection.provider}/works/${track_collection.targetId}.json`;
-			}
 
-			const wallpapers = await readJSONFile(filePath);
+			// Add to blacklist cache
+			this.blacklistSet.add(id);
 
-			const wallpapersUpdated = wallpapers.map((w: any) => {
-				if (w.id === id) {
-					return { ...w, status: false };
-				} else {
-					return w;
-				}
-			});
-			await ensureJSONFileAndWrite(filePath, wallpapersUpdated);
-
-			console.log(`[!] - Remove wallpaper has id ${id} successfully.`);
+			this.logger.log(`[!] - Remove wallpaper has id ${id} successfully.`);
 		} catch (error) {
-			console.error(`[x] - Remove wallpaper has id ${id} failed: ${error.message}`);
+			this.logger.error(`[x] - Remove wallpaper has id ${id} failed: ${error.message}`);
 		}
 	}
 

@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query, ParseIntPipe, VERSION_NEUTRAL } from "@nestjs/common";
+import { Controller, Get, Post, Body, Param, Query, ParseIntPipe, VERSION_NEUTRAL } from "@nestjs/common";
 import { AppService } from "./app.service";
 import {
 	AppCategoryDto,
@@ -8,7 +8,10 @@ import {
 	GetAlbumsByCategoryDto,
 	GetAlbumsByTagDto,
 	VerifyInvalidLinksDto,
-} from "./dto";
+	HandleAlbumResultsDto,
+	HandleCategoriesTagsDto,
+	PushMissingWallpapersDto,
+} from "./dto/app.dto";
 import { ApiResponseDto } from "#root/common/dto";
 
 @Controller({
@@ -17,9 +20,9 @@ import { ApiResponseDto } from "#root/common/dto";
 export class AppController {
 	constructor(private readonly appService: AppService) {}
 
-	@Get()
+	@Get("health")
 	health() {
-		return { status: "ok" };
+		return { status: "OK" };
 	}
 
 	// App Backend: Album Data endpoints
@@ -74,5 +77,26 @@ export class AppController {
 	@Get("verify/invalid-links")
 	async verifyInvalidLinks(@Query() verifyInvalidLinksDto: VerifyInvalidLinksDto): Promise<any[]> {
 		return this.appService.verifyInvalidLinks(verifyInvalidLinksDto.typeVerify || "albums");
+	}
+
+	// App data standardization routes
+	@Post("albums-result")
+	async handleAlbumsResult(@Body() handleAlbumResultsDto: HandleAlbumResultsDto) {
+		return this.appService.handleAlbumsResult(handleAlbumResultsDto);
+	}
+
+	@Post("profiles-result")
+	async handleProfilesResult(@Body() handleProfileResultsDto: any) {
+		return this.appService.handleProfilesResult(handleProfileResultsDto);
+	}
+
+	@Post("categories-tags-result")
+	async handleCategoriesAndTagsResult(@Body() handleCategoriesTagsDto: HandleCategoriesTagsDto) {
+		return this.appService.handleCategoriesAndTagsResult(handleCategoriesTagsDto);
+	}
+
+	@Post("push-missing")
+	async pushMissingWallpapers(@Body() pushMissingDto: PushMissingWallpapersDto) {
+		return this.appService.pushMissingWallpapers(pushMissingDto);
 	}
 }

@@ -1,17 +1,18 @@
 import { Injectable } from "@nestjs/common";
+import { PrismaRepository } from "#root/modules/prisma/prisma.repository";
 import axios from "axios";
-import * as fs from "fs/promises";
-import { delay, ensureJSONFileAndWrite, mergeJSONArrays, ensureDirectoryExists } from "#root/common/utils";
+import { delay } from "#root/common/utils";
 import { TrackCollectionDto, WallpaperDto } from "../dto";
 
 @Injectable()
 export class SeaArtProviderService {
 	private readonly host = "www.seaart.ai";
-	private readonly dirAccItemsPath = "data/account-items";
+
+	constructor(private prisma: PrismaRepository) {}
 
 	async fetchItemsByTag(collection: TrackCollectionDto): Promise<WallpaperDto[]> {
 		let page = 1;
-		let wallpapers: WallpaperDto[] = [];
+		let seaArtWorks: any[] = [];
 
 		while (true) {
 			const response = await axios.post(`https://${this.host}/api/v1/square/v3/artwork/list`, {
@@ -29,37 +30,61 @@ export class SeaArtProviderService {
 
 			const items = response.data.data.items.map((item: any) => ({
 				id: item.id,
-				obj_type: item.obj_type,
-				sub_obj_type: item.sub_obj_type,
+				modelId: collection.collectionTargetId,
+				prompt: "",
+				localPrompt: null,
+				banner: {
+					url: item.cover,
+					width: 0,
+					height: 0,
+				},
+				authorId: item.author.id,
+				folderNo: "default",
+				objType: item.obj_type,
+				subObjType: item.sub_obj_type,
 				title: item.sub_title,
 				cover: item.cover,
-				model_id: collection.collectionTargetId,
-				prompt: null,
-				local_prompt: null,
-				banner: null,
-				author_id: item.author.id,
-				folder_no: null,
-				tracking_type: "tag",
-				tracking_collection_id: collection.collectionId,
+				trackingType: "tag",
+				trackingCollectionId: collection.collectionId,
+				status: true,
 			}));
 
 			if (items && items.length > 0) {
-				wallpapers = wallpapers.concat(items);
+				seaArtWorks = seaArtWorks.concat(items);
 			}
 			page++;
 			if (!response.data.data.has_more) break;
 		}
 
-		if (wallpapers.length > 0) {
-			const filePath = `data/collections/${collection.collectionProvider}/${collection.collectionId}-${collection.collectionTargetId}.json`;
-			await fs.writeFile(filePath, JSON.stringify(wallpapers, null, 2));
+		if (seaArtWorks.length > 0) {
+			// Save to database using Prisma
+			await this.prisma.seaArtWork.createMany({
+				data: seaArtWorks,
+			});
 		}
-		return wallpapers;
+
+		// Convert to WallpaperDto format
+		return seaArtWorks.map((work) => ({
+			id: work.id,
+			model_id: work.modelId,
+			prompt: work.prompt,
+			local_prompt: work.localPrompt,
+			banner: work.banner,
+			author_id: work.authorId,
+			folder_no: work.folderNo,
+			obj_type: work.objType,
+			sub_obj_type: work.subObjType,
+			title: work.title,
+			cover: work.cover,
+			tracking_type: work.trackingType,
+			tracking_collection_id: work.trackingCollectionId,
+			status: work.status,
+		}));
 	}
 
 	async fetchItemsByModel(collection: TrackCollectionDto): Promise<WallpaperDto[]> {
 		let page = 1;
-		let wallpapers: WallpaperDto[] = [];
+		let seaArtWorks: any[] = [];
 
 		while (true) {
 			const response = await axios.post(`https://${this.host}/api/v1/square/v3/artwork/list`, {
@@ -75,32 +100,56 @@ export class SeaArtProviderService {
 
 			const items = response.data.data.items.map((item: any) => ({
 				id: item.id,
-				obj_type: item.obj_type,
-				sub_obj_type: item.sub_obj_type,
+				modelId: collection.collectionTargetId,
+				prompt: "",
+				localPrompt: null,
+				banner: {
+					url: item.cover,
+					width: 0,
+					height: 0,
+				},
+				authorId: item.author.id,
+				folderNo: "default",
+				objType: item.obj_type,
+				subObjType: item.sub_obj_type,
 				title: item.sub_title,
 				cover: item.cover,
-				model_id: collection.collectionTargetId,
-				prompt: null,
-				local_prompt: null,
-				banner: null,
-				author_id: item.author.id,
-				folder_no: null,
-				tracking_type: "model",
-				tracking_collection_id: collection.collectionId,
+				trackingType: "model",
+				trackingCollectionId: collection.collectionId,
+				status: true,
 			}));
 
 			if (items && items.length > 0) {
-				wallpapers = wallpapers.concat(items);
+				seaArtWorks = seaArtWorks.concat(items);
 			}
 			page++;
 			if (!response.data.data.has_more) break;
 		}
 
-		if (wallpapers.length > 0) {
-			const filePath = `data/collections/${collection.collectionProvider}/${collection.collectionId}-${collection.collectionTargetId}.json`;
-			await fs.writeFile(filePath, JSON.stringify(wallpapers, null, 2));
+		if (seaArtWorks.length > 0) {
+			// Save to database using Prisma
+			await this.prisma.seaArtWork.createMany({
+				data: seaArtWorks,
+			});
 		}
-		return wallpapers;
+
+		// Convert to WallpaperDto format
+		return seaArtWorks.map((work) => ({
+			id: work.id,
+			model_id: work.modelId,
+			prompt: work.prompt,
+			local_prompt: work.localPrompt,
+			banner: work.banner,
+			author_id: work.authorId,
+			folder_no: work.folderNo,
+			obj_type: work.objType,
+			sub_obj_type: work.subObjType,
+			title: work.title,
+			cover: work.cover,
+			tracking_type: work.trackingType,
+			tracking_collection_id: work.trackingCollectionId,
+			status: work.status,
+		}));
 	}
 
 	async fetchItemsByAccount(collection: TrackCollectionDto, accId?: string): Promise<number> {
@@ -167,14 +216,37 @@ export class SeaArtProviderService {
 			}
 
 			if (wallpapers.length > 0) {
-				const filePath = `data/collections/${collection.collectionProvider}/works/${accountId}.json`;
+				// Convert to SeaArt work format for database storage
+				const seaArtWorks = wallpapers.map((w) => ({
+					id: w.id,
+					modelId: w.model_id,
+					prompt: w.prompt || "",
+					localPrompt: w.local_prompt,
+					banner: w.banner,
+					authorId: w.author_id,
+					folderNo: w.folder_no,
+					objType: null,
+					subObjType: null,
+					title: null,
+					cover: null,
+					trackingType: "work",
+					trackingCollectionId: collection.collectionId,
+					status: true,
+				}));
 
-				// Store small wallpapers data (id, path, ...)
-				const newItems = wallpapers.map((w) => ({ id: w.id, locationPath: filePath }));
-				await mergeJSONArrays(`${this.dirAccItemsPath}/${accountId}.json`, newItems);
+				// Save to database using Prisma
+				await this.prisma.seaArtWork.createMany({
+					data: seaArtWorks,
+				});
 
-				// Store full wallpapers data
-				await ensureJSONFileAndWrite(filePath, wallpapers);
+				// Create account item records
+				const accountItems = seaArtWorks.map((work) => ({
+					seaArtWorkId: work.id,
+				}));
+
+				await this.prisma.accountItem.createMany({
+					data: accountItems,
+				});
 
 				console.log(`[!] - Fetch wallpapers from Account ID success: ${wallpapers.length} wallpapers`);
 			} else {
@@ -220,8 +292,32 @@ export class SeaArtProviderService {
 			});
 
 			if (cls && cls.length > 0) {
-				const filePath = `data/collections/${collection.collectionProvider}/collections/${collection.collectionTargetId}.json`;
-				await ensureJSONFileAndWrite(filePath, cls);
+				// Save collections to database
+				const seaArtCollections = cls.map((cl) => ({
+					id: cl.id,
+					name: cl.name,
+					category: cl.category,
+					trackingCollectionId: cl.tracking_collection_id,
+				}));
+
+				await this.prisma.seaArtCollection.createMany({
+					data: seaArtCollections,
+				});
+
+				// Create collection items
+				for (const cl of cls) {
+					const collectionItems = cl.artwork_items.map((item) => ({
+						id: item.id,
+						banner: item.banner,
+						bannerWidth: item.banner_width,
+						bannerHeight: item.banner_height,
+						collectionId: cl.id,
+					}));
+
+					await this.prisma.seaArtCollectionItem.createMany({
+						data: collectionItems,
+					});
+				}
 
 				// Fetch wallpapers...
 				for (const cl of cls) {
@@ -304,16 +400,37 @@ export class SeaArtProviderService {
 				`[!] - Fetch wallpapers for account-collection (${collectionId}) success (with ${page} pages): ${wallpapers.length} wallpapers`,
 			);
 
-			const dirPath = `data/collections/${collection.collectionProvider}/collections/${accountId}`;
-			const filePath = `${dirPath}/${collectionId}.json`;
+			// Convert to SeaArt work format for database storage
+			const seaArtWorks = wallpapers.map((w) => ({
+				id: w.id,
+				modelId: w.model_id,
+				prompt: w.prompt || "",
+				localPrompt: w.local_prompt,
+				banner: w.banner,
+				authorId: w.author_id,
+				folderNo: w.folder_no,
+				objType: null,
+				subObjType: null,
+				title: null,
+				cover: null,
+				trackingType: "collection",
+				trackingCollectionId: collection.collectionId,
+				status: true,
+			}));
 
-			// Store small wallpapers data (id, path, ...)
-			const newItems = wallpapers.map((w) => ({ id: w.id, locationPath: filePath }));
-			await mergeJSONArrays(`${this.dirAccItemsPath}/${accountId}.json`, newItems);
+			// Save to database using Prisma
+			await this.prisma.seaArtWork.createMany({
+				data: seaArtWorks,
+			});
 
-			// Store full wallpapers data
-			await ensureDirectoryExists(dirPath);
-			await ensureJSONFileAndWrite(filePath, wallpapers);
+			// Create account item records
+			const accountItems = seaArtWorks.map((work) => ({
+				seaArtWorkId: work.id,
+			}));
+
+			await this.prisma.accountItem.createMany({
+				data: accountItems,
+			});
 		}
 		return wallpapers.length;
 	}

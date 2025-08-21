@@ -33,6 +33,9 @@ import { QueueModule } from "#root/modules/queue/queue.module";
 				password: config.REDIS_PASSWORD,
 			},
 		}),
+		BullModule.registerQueue({
+			name: "collection-queue",
+		}),
 		PrismaModule,
 		AlbumModule,
 		CollectionModule,

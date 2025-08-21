@@ -41,3 +41,18 @@ export class AppTagActiveDto {
 	name: string;
 	total: number;
 }
+
+export class HandleAlbumResultsDto {
+	resource: any;
+	phaseNumber: string;
+}
+
+export class HandleCategoriesTagsDto {
+	resource: any;
+}
+
+export class PushMissingWallpapersDto {
+	resource: any;
+	albumId: string;
+	wallpaperIds: string[];
+}

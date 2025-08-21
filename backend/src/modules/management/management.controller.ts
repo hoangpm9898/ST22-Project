@@ -6,15 +6,16 @@ import { ListWallpapersRequestDto, ListWallpapersResponseDto, DeleteWallpaperDto
 export class ManagementController {
 	constructor(private readonly managementService: ManagementService) {}
 
+	// Management routes
+	@Post("wallpapers")
+	async listWallpapers(@Body() listWallpapersDto: ListWallpapersRequestDto): Promise<ListWallpapersResponseDto> {
+		return this.managementService.listWallpapers(listWallpapersDto);
+	}
+
 	@Get("wallpapers/populate")
 	async listPopulateData(): Promise<{ status: string; data: PopulateDataDto }> {
 		const populateData = await this.managementService.getPopulateData();
 		return { status: "success", data: populateData };
-	}
-
-	@Post("wallpapers")
-	async listWallpapers(@Body() listWallpapersDto: ListWallpapersRequestDto): Promise<ListWallpapersResponseDto> {
-		return this.managementService.listWallpapers(listWallpapersDto);
 	}
 
 	@Post("wallpapers/delete")

@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 import { InjectQueue } from "@nestjs/bull";
 import { Queue } from "bull";
 import { GoogleSheetsService } from "./services/google-sheets.service";
@@ -7,6 +7,8 @@ import { TrackCollectionDto, SyncCollectionsResponseDto } from "./dto";
 
 @Injectable()
 export class CollectionService {
+	private readonly logger: Logger = new Logger(CollectionService.name);
+
 	constructor(
 		private googleSheetsService: GoogleSheetsService,
 		private seaArtProviderService: SeaArtProviderService,
@@ -20,7 +22,7 @@ export class CollectionService {
 		if (!collections || collections.length === 0) {
 			throw new Error("No collections found");
 		}
-		console.log(`\n[!] We have ${collections.length} collections!!!`);
+		this.logger.log(`[!] We have ${collections.length} collections!!!`);
 
 		let readyCount = 0;
 		for (const collection of collections) {
